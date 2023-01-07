@@ -5,15 +5,18 @@ const App = () => {
   console.log('came2')
   const [users, setUsers] = useState('')
   useEffect(() => {
-    let data;
-    const fetchData = async () => {
-      data = await axios.get('/users');
-      setUsers(data.data)
+    try {
+      const fetchData = async () => {
+        const response = await axios.get('/users');
+        setUsers(response.data)
+      }
+      fetchData()
+    } catch (e) {
+      console.log(e)
     }
-    fetchData()
   }, [])
   
-  console.log('users', JSON.parse('{"users":1}'))
+  console.log('users', users)
 
 
 
