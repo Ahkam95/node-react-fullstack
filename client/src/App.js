@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const App = () => {
   console.log('came2')
-  const [users, setUsers] = useState('')
+  const [users, setUsers] = useState(undefined)
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -21,7 +21,12 @@ const App = () => {
 
 
   return (
-    <div>Hi</div>
+    <>
+      {(users === undefined) ? <p>Loading..</p> : (
+        users.Users.map((user, i) => (<p>{user}</p>))
+      )}
+      <div>Hi</div>
+    </>
   )
 }
 
